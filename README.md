@@ -3,9 +3,9 @@ jQuery Typewriter Plugin
 
 Typewriter is a jQuery plugin which types text, erases and emulates terminal typing style.
 
-Usage
-------------
+####Usage
 
+```
 <div id="typewriter">
 
 <script src="js/jquery.min.js"></script>
@@ -21,5 +21,5 @@ $(document).ready(function() {
         blinkSpeed : 1000
     });
 });
-
+```
 
