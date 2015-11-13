@@ -22,6 +22,7 @@ $(document).ready(function() {
     });
 });
 ```
+**WARNING: You have to put both jquery.typewriter.js and jquery.typewriter.worker.js or their minified versions together in same directory.**
 ####Styling
 
 You can style it very easily by applying CSS for following IDs
