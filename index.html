@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/typewriter/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery TypeWriter</title>
+    <link href='https://fonts.googleapis.com/css?family=Noticia+Text' rel='stylesheet' type='text/css'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css">
+    <link href="style.css" rel='stylesheet' type='text/css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js" defer></script>
+    <script src="jquery.typewriter.min.js" defer></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js" defer></script>
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="container-fluid" id="header">
+            <div class="row">
+                <div class="col-md-12" id="cross-bar">
+                    <a href="http://github.com/Ashish-Bansal/jquery-typewriter">
+                        <h4 class="col-sm-4"><span class="fa fa-github">Fork on Github</span></h4>
+                    </a>
+                    <h4 class="col-sm-6">jquery.typewriter:zsh--konsole</span></h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" id="middle">
+            <div class="row">
+                <div class="col-md-12">
+                    <br><br>
+                    <h1 id="typewriter"></h1>
+                </div>
+            </div>
+            <br><br>
+            <div>
+                <pre>
+                    <h4>Usage :</h4>
+                    <code class="html js">
+&lt;div id="typewriter"&gt;&lt;/div&gt;
+&lt;script src="js/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="js/jquery.typewriter.min.js"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+$(document).ready(function() {
+    $("#typewriter").typewriter({
+        prefix : "Prefix : ",
+        text : ["Hey", "this", "is", "cool", "isn't it ?"],
+        typeDelay : 200,
+        waitingTime : 1000,
+        blinkSpeed : 1000
+    });
+});
+&lt;/script&gt;
+                    </code>
+                </pre>
+            </div>
+        </div>
+        <section id="footer" >
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-xs-12" id="footer-div">
+                        &copy; 2015 Ashish Bansal | All Rights Reserved
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
