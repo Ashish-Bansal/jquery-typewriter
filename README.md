@@ -22,4 +22,30 @@ $(document).ready(function() {
     });
 });
 ```
+####Styling
 
+You can style it very easily by applying CSS for following IDs
+
+```
+<style>
+#typewriter {
+    color: #31708f;
+    background-color: #d9edf7;
+    padding: 15px;
+    border: none;
+    ...
+}
+
+#typewriter-prefix {
+    font-size: 24px;
+    font-weight: 700;
+    ...
+}
+
+#typewriter-text {
+    font-size: 24px;
+    font-weight: 500;
+    ...
+}
+</style>
+```
