@@ -41,7 +41,7 @@
                 });
             }, settings.blinkSpeed);
 
-            var myWorker = new Worker("worker.js");
+            var myWorker = new Worker("jquery.typewriter.worker.js");
             myWorker.postMessage(settings);
             myWorker.onmessage = function(e) {
                 var data = e.data;
