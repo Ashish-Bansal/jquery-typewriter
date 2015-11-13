@@ -2,11 +2,11 @@
     $.fn.typewriter = function(options) {
         var settings = $.extend({
             prefix : "Prefix",
-            add : ["Hey", "This is cool, isn't it?"],
-            animation_time : 0.27,
-            pause : 1500,
+            text : ["Hey", "This is cool, isn't it?"],
+            typeDelay : 200,
+            waitingTime : 1000,
             callback : null,
-            blinkSpeed : 200
+            blinkSpeed : 1000
         }, options);
 
         return this.each(function() {
@@ -14,8 +14,8 @@
             var domHtml = '';
             var totalLength = 0;
 
-            for(var i = 0; i < settings.add.length; i++) {
-                totalLength += settings.add[i].length;
+            for(var i = 0; i < settings.text.length; i++) {
+                totalLength += settings.text[i].length;
             }
 
             $(this).append('<span id="typewriter-prefix"></span>');
@@ -50,7 +50,7 @@
                 if (sInt !== null) {
                     clearInterval(sInt);
                     if (once === false) {
-                        setTimeout(start, settings.pause);
+                        setTimeout(start, settings.waitingTime);
                         once = true;
                         return;
                     }
@@ -58,21 +58,21 @@
                     sInt = null;
                     eInt = setInterval(function() {
                         removeCharacter();
-                    }, settings.animation_time);
+                    }, settings.typeDelay);
 
                 } else {
                     clearInterval(eInt);
                     eInt = null;
-                    var currentString = settings.add[Math.floor(currentStringIndex/2)];
+                    var currentString = settings.text[Math.floor(currentStringIndex/2)];
                     sInt = setInterval(function() {
                         appendCharacter(currentString.charAt(currentCharIndex));
                         currentCharIndex++;
-                    }, settings.animation_time);
+                    }, settings.typeDelay);
                 }
 
                 currentCharIndex = 0;
-                setTimeout(start, settings.add[Math.floor(currentStringIndex/2)].length*settings.animation_time + settings.animation_time);
-                currentStringIndex = (currentStringIndex+1)%(settings.add.length*2);
+                setTimeout(start, settings.text[Math.floor(currentStringIndex/2)].length*settings.typeDelay + settings.typeDelay);
+                currentStringIndex = (currentStringIndex+1)%(settings.text.length*2);
             })();
 
             if ($.isFunction(settings.callback)) {
