@@ -22,15 +22,7 @@
             $(this).append('<span id="typewriter-text"></span>');
             $(this).append('<span id="typewriter-suffix">&#9608;</span>');
 
-            $('#typewriter-prefix').html(settings.initial);
-
-            setInterval(function() {
-                $('#typewriter-suffix').animate({
-                    opacity: 0
-                }).animate({
-                    opacity: 1
-                });
-            }, settings.blinkSpeed);
+            $('#typewriter-prefix').html(settings.prefix);
 
             function appendCharacter(character) {
                 $('#typewriter-text').html($('#typewriter-text').html() + character);
@@ -41,44 +33,28 @@
                 $('#typewriter-text').html(str.substring(0, str.length - 1));
             }
 
-            var currentStringIndex = 0;
-            var currentCharIndex = 0;
-            var sInt = null, eInt = null;
-            var once = false;
-            (function start() {
+            setInterval(function() {
+                $('#typewriter-suffix').animate({
+                    opacity: 0
+                }).animate({
+                    opacity: 1
+                });
+            }, settings.blinkSpeed);
 
-                if (sInt !== null) {
-                    clearInterval(sInt);
-                    if (once === false) {
-                        setTimeout(start, settings.waitingTime);
-                        once = true;
-                        return;
-                    }
-                    once = false;
-                    sInt = null;
-                    eInt = setInterval(function() {
-                        removeCharacter();
-                    }, settings.typeDelay);
-
+            var myWorker = new Worker("worker.js");
+            myWorker.postMessage(settings);
+            myWorker.onmessage = function(e) {
+                var data = e.data;
+                if (data[0] === 0) {
+                    appendCharacter(data[1]);
                 } else {
-                    clearInterval(eInt);
-                    eInt = null;
-                    var currentString = settings.text[Math.floor(currentStringIndex/2)];
-                    sInt = setInterval(function() {
-                        appendCharacter(currentString.charAt(currentCharIndex));
-                        currentCharIndex++;
-                    }, settings.typeDelay);
+                    removeCharacter();
                 }
-
-                currentCharIndex = 0;
-                setTimeout(start, settings.text[Math.floor(currentStringIndex/2)].length*settings.typeDelay + settings.typeDelay);
-                currentStringIndex = (currentStringIndex+1)%(settings.text.length*2);
-            })();
-
+            };
             if ($.isFunction(settings.callback)) {
                 settings.callback.call(this);
             }
         });
-    };
+};
 }(jQuery));
 
